@@ -19,10 +19,15 @@ def start_cipher():
                                  'Please try again. ')
         encode_or_decode = encode_or_decode.strip().lower()
     message = input('Wonderful. What message would you like me to use? ')
+    key = int(input('Finally, what key number would you like me to use? '))
     if encode_or_decode in 'encode':
-        encoder = Encoder(message)
+        encoder = Encoder(message, key)
+        message = encoder.encode_message()
     else:
-        decoder = Decoder(message)
+        decoder = Decoder(message, key)
+        message = decoder.decode_message()
+    print('Here is your message:', message)
+    return
 
 
 if __name__ == '__main__':

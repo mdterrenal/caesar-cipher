@@ -19,13 +19,16 @@ def start_cipher():
                                  'Please try again. ')
         encode_or_decode = encode_or_decode.strip().lower()
     message = input('Wonderful. What message would you like me to use? ')
+    while not message.isalpha():
+        message = input('Please include only alphabetic characters. '
+                        'Please try again. ')
     key = int(input('Finally, what key number would you like me to use? '))
     if encode_or_decode in 'encode':
-        encoder = Encoder(message, key)
-        message = encoder.encode_message()
+        encoder = Encoder(message)
+        message = encoder.encode_message(key)
     else:
-        decoder = Decoder(message, key)
-        message = decoder.decode_message()
+        decoder = Decoder(message)
+        message = decoder.decode_message(key)
     print('Here is your message:', message)
     return
 

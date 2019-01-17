@@ -6,6 +6,7 @@ class Encoder:
 
     def __init__(self, message):
         """Initialize an instance of Encoder with a message."""
+
         self.message = message.upper()
         self.alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 

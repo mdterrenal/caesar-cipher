@@ -18,6 +18,14 @@ class Decoder:
         the letter A, wrapping around to Z if necessary.
         """
 
-        decode_message = [alphabet[(alphabet.index(char) - key) % 26]
-                          for char in self.message]
-        return ''.join(decode_message)
+        decoded_message = ''
+        for char in self.message:
+            if char.isalpha():
+                decoded_char = self.convert_char(char, key)
+                decoded_message = decoded_message + decoded_char
+            else:
+                decoded_message = decoded_message + char
+        return decoded_message
+
+    def convert_char(self, char, key):
+        return Decoder.alphabet[(Decoder.alphabet.index(char) - key) % 26]

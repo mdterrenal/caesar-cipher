@@ -17,6 +17,14 @@ class Encoder:
         the letter Z, wrapping around to A if necessary.
         """
 
-        encode_message = [alphabet[(alphabet.index(char) + key) % 26]
-                          for char in self.message]
-        return ''.join(encode_message)
+        encoded_message = ''
+        for char in self.message:
+            if char.isalpha():
+                encoded_char = self.convert_char(char, key)
+                encoded_message = encoded_message + encoded_char
+            else:
+                encoded_message = encoded_message + char
+        return encoded_message
+
+    def convert_char(self, char, key):
+        return Encoder.alphabet[(Encoder.alphabet.index(char) + key) % 26]

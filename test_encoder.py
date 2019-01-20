@@ -28,6 +28,10 @@ class TestEncoder(unittest.TestCase):
     def test_mixed_chars(self):
         encoder = Encoder('he ll o!')
         self.assertEqual(encoder.encode_message(2), 'JG NN Q!')
+        encoder = Encoder('483!8@)$_>')
+        self.assertEqual(encoder.encode_message(23), '483!8@)$_>')
+        encoder = Encoder('386910257')
+        self.assertEqual(encoder.encode_message(10), '386910257')
 
 if __name__ == '__main__':
     unittest.main()
